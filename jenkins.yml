@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"  # Port do dostępu do interfejsu Jenkins
+      - "50000:50000"  # Port dla agentów Jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home  # Przechowywanie danych Jenkins
+    networks:
+      - sona  # Dołączenie do istniejącej sieci 'sona'
+
+volumes:
+  jenkins_home:
+    driver: local
+
+networks:
+  sona:
+    external: true  # Użycie istniejącej sieci o nazwie 'sona'
+
