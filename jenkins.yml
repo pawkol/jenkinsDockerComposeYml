@@ -5,12 +5,12 @@ services:
     image: jenkins/jenkins:lts
     container_name: jenkins
     ports:
-      - "8080:8080"  # Port do dostępu do interfejsu Jenkins
-      - "50000:50000"  # Port dla agentów Jenkins
+      - "8080:8080"
+      - "50000:50000"
     volumes:
-      - jenkins_home:/var/jenkins_home  # Przechowywanie danych Jenkins
+      - jenkins_home:/var/jenkins_home
     networks:
-      - sona  # Dołączenie do istniejącej sieci 'sona'
+      - sona
 
 volumes:
   jenkins_home:
@@ -18,5 +18,5 @@ volumes:
 
 networks:
   sona:
-    external: true  # Użycie istniejącej sieci o nazwie 'sona'
+    external: true
 
